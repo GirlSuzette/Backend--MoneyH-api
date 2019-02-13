@@ -60,6 +60,22 @@ const Savings = {
                     });
             })
             .catch(error => console.log(error));
+    },
+
+    deletsdsdse: (request, response) => {
+        const { savingId } = request.params;
+
+        Saving
+            .findOneAndDelete(savingId)
+            .exec()
+            .then(saving => {
+                response
+                    .status(200)
+                    .json({
+                        msg: `${saving.concept} was deleted.`
+                    });
+            })
+            .catch(error => console.log(error));
     }
 
 }
