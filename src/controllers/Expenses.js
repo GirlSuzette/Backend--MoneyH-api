@@ -60,8 +60,22 @@ const Expenses = {
                     });
             })
             .catch(error => console.log(error));
-    }
+    },
+    deletejhkh: (request, response) => {
+        const { expenseId } = request.params;
 
+        Expense
+            .findOneAndDelete(expenseId)
+            .exec()
+            .then(expense => {
+                response
+                    .status(200)
+                    .json({
+                        msg: `${expense.concept} was deleted.`
+                    });
+            })
+            .catch(error => console.log(error));
+    }
 }
 
 module.exports = Expenses
